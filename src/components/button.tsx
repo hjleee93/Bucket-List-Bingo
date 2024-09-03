@@ -7,11 +7,12 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   size?: 'small' | 'medium' | 'large';
   variant?: 'filled' | 'outlined'; 
+  className?: string;
 };
 
 
 
-const Button = ({ children, onClick, disabled, type = 'button', size = 'large', variant = 'filled' } : ButtonProps) => {
+const Button = ({ children, onClick, disabled, type = 'button', size = 'large', variant = 'filled', className } : ButtonProps) => {
   let height;
   let width;
   let _variant;
@@ -27,7 +28,7 @@ const Button = ({ children, onClick, disabled, type = 'button', size = 'large', 
       break;
     case 'medium':
       height = 'h-12';
-      width = 'w-[165px]';
+    width = 'w-[165px]';
     default:
   }
 
@@ -41,12 +42,16 @@ const Button = ({ children, onClick, disabled, type = 'button', size = 'large', 
     default:
   }
 
+  if(disabled) {
+    _variant = 'bg-main-active text-gray-300 opacity-70 cursor-not-allowed'
+  }
+
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${height} ${width} ${_variant}  rounded`}
+      className={`${height} ${width} ${_variant} ${className} rounded`}
     >
       {children}
     </button>
