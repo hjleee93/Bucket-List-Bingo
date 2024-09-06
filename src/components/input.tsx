@@ -2,6 +2,7 @@
 
 type InputProps = {
   onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e:React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
   disabled?: boolean;
   error?: boolean;
@@ -14,19 +15,27 @@ type InputProps = {
 
 
 
-const Input = ({ onChange, placeholder, disabled, error = false, errorText, type = 'text', variant = 'outlined', fullwidth=false } : InputProps) => {
-  let inputClasses;
+
+const Input = ({ onChange, onKeyDown, placeholder, disabled, error = false, errorText, type = 'text', variant = 'outlined', fullwidth=false } : InputProps) => {
+  let inputClasses = '';
 
   //TODO: before/after 적용해서 active시에 border 안움직이게
   switch (variant) {
     case 'outlined':
-      inputClasses = 'bg-white border px-3 rounded text-black disabled:bg-main-disabled focus: focus-visible:outline-none'
+      inputClasses = 'bg-white border px-3 rounded text-black disabled:bg-main-disabled focus-visible:outline-none'
       break;
     case 'underline':
-      inputClasses = 'bg-white border-b  text-blacke disabled:bg-main-disabled focus-visible:outline-none'
+      inputClasses = 'bg-white border-b  text-black disabled:bg-main-disabled focus-visible:outline-none'
       break;
     default:
   }
+
+  const handleKeydown  = (e : React.KeyboardEvent<HTMLInputElement>) => {
+    if(e.key === 'Enter'){
+      onKeyDown && onKeyDown(e); // Add null check before invoking the function
+    }
+  }
+
 
   //border color
   if (error || errorText) {
@@ -40,6 +49,7 @@ const Input = ({ onChange, placeholder, disabled, error = false, errorText, type
     <input
       type={type}
       onChange={onChange}
+      onKeyDown={handleKeydown}
       disabled={disabled}
       placeholder={placeholder}
       className={` ${inputClasses} py-3 w-full`}

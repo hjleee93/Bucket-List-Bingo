@@ -1,0 +1,34 @@
+
+.tiptap{
+  height: 100%;
+}
+
+.ProseMirror:focus-visible{
+  outline: none;
+}
+
+
+.bubble-menu {
+  background-color: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: 0.7rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  padding: 0.2rem;
+}
+
+.bubble-menu button {
+  background-color: unset;
+}
+
+.bubble-menu button:hover {
+  background-color: var(--gray-3);
+}
+
+.bubble-menu button.is-active {
+  background-color: var(--purple);
+}
+
+.bubble-menu button.is-active:hover {
+  background-color: var(--purple-contrast);
+}

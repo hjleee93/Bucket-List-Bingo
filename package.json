@@ -9,16 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
+    "@tiptap/extension-bubble-menu": "^2.6.6",
+    "@tiptap/extension-color": "^2.6.6",
+    "@tiptap/extension-floating-menu": "^2.6.6",
+    "@tiptap/extension-focus": "^2.6.6",
+    "@tiptap/extension-text-style": "^2.6.6",
+    "@tiptap/pm": "^2.6.6",
+    "@tiptap/react": "^2.6.6",
+    "@tiptap/starter-kit": "^2.6.6",
     "next": "14.2.7",
     "next-auth": "^4.24.7",
+    "quill": "^2.0.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-redux": "^9.1.2"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
+    "postcss-import": "^16.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
