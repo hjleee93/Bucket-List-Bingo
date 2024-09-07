@@ -13,9 +13,6 @@ type InputProps = {
 };
 
 
-
-
-
 const Input = ({ onChange, onKeyDown, placeholder, disabled, error = false, errorText, type = 'text', variant = 'outlined', fullwidth=false } : InputProps) => {
   let inputClasses = '';
 

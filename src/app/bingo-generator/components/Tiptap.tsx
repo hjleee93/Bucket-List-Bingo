@@ -19,7 +19,6 @@ const Tiptap = ({isClicked, sendEditor} : TiptapProps) => {
  
   const editor = useEditor({
     extensions: [StarterKit, TextStyle, Color],
-    content: '',
     immediatelyRender: true,
     
   })

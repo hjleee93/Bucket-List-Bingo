@@ -9,7 +9,8 @@ interface BingoCellProps {
   value?: number;
   isLastRow: boolean;
   isLastCol: boolean;
-  isClicked: boolean
+  isClicked: boolean;
+  setCellStatus: (status: boolean) => void;
 }
 
 export default function BingoCell({
@@ -18,12 +19,14 @@ export default function BingoCell({
   value,
   isLastRow,
   isLastCol,
-  isClicked
+  isClicked,
+  setCellStatus
 }: BingoCellProps) {
 
   const [editor, setEditor] = useState<Editor | null>(null);
 
   const getEditor = (editor: Editor) => {
+    setCellStatus(editor.isEmpty);
     setEditor(editor);
   }
 
@@ -40,6 +43,7 @@ export default function BingoCell({
         height: `${size}px`,
       }}
     >
+    
      
       {isClicked && editor && (
         <div className="relative mb-4" style={{ bottom: `${size}px` }}>

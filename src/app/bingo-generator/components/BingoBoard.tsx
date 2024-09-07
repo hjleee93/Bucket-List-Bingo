@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react";
 import BingoCell from "./BingoCell";
+import { send } from "process";
 
 interface BingoBoardProps {
   gridCount: number;
@@ -43,6 +44,10 @@ export default function BingoBoard({ gridCount, gridSize }: BingoBoardProps) {
             isLastCol={isLastCol}
             isClicked={clickedCell === index}
             onClick={() => handleClick(index)}
+            setCellStatus={(status) => {
+              console.log(status)
+
+            }}
           />
         );
       })}

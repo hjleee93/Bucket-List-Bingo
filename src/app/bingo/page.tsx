@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import BingoBoard from "../bingo-generator/components/BingoBoard";
-
+import Button from "@/components/button";
 
   export default function BingoPage() {
     const [gridSize, setGridSize] = useState<number>(0);
@@ -14,9 +14,9 @@ import BingoBoard from "../bingo-generator/components/BingoBoard";
   }, []);
 
   return(
-    <div className="flex justify-center">
-
-  <BingoBoard gridCount={Number(gridSize)} gridSize={320/Number(gridSize)}/>
+    <div className="flex flex-col items-center">
+    <BingoBoard gridCount={Number(gridSize)} gridSize={320/Number(gridSize)}/>
+    <Button className="absolute bottom-3" size='large'  >{'빙고를 채워주세요!'}</Button>
   </div>
   )
 }
