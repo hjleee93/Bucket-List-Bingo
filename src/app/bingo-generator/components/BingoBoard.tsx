@@ -46,7 +46,6 @@ export default function BingoBoard({ gridCount, gridSize }: BingoBoardProps) {
             onClick={() => handleClick(index)}
             setCellStatus={(status) => {
               console.log(status)
-
             }}
           />
         );
