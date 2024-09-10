@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.5",
     "@reduxjs/toolkit": "^2.2.7",
     "@tiptap/extension-bubble-menu": "^2.6.6",
     "@tiptap/extension-color": "^2.6.6",
