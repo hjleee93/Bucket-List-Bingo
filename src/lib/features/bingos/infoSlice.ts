@@ -18,16 +18,17 @@ export const bingoInfoSlice = createSlice({
     setBingoTitle: (state, action: PayloadAction<string>) => {
       state.title = action.payload;
     },
-    setSize: (state, action: PayloadAction<number>) => {
+    setBingoSize: (state, action: PayloadAction<number>) => {
       state.size = action.payload;
     },
   },
 });
 
-export const { setBingoTitle, setSize } = bingoInfoSlice.actions;
+export const { setBingoTitle, setBingoSize } = bingoInfoSlice.actions;
 
 
 
 export const selectBingoTitle = (state: RootState) => state.bingoInfo.title;
+export const selectBingoSize = (state: RootState) => state.bingoInfo.size;
 
 export default bingoInfoSlice.reducer

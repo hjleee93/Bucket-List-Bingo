@@ -3,19 +3,19 @@ import { useEffect, useState } from "react";
 import BingoBoard from "../bingo-generator/components/BingoBoard";
 import Button from "@/components/button";
 import BackLayout from "../layouts/backLayout";
-import { selectBingoTitle } from "@/lib/features/bingos/infoSlice";
+import { selectBingoSize, selectBingoTitle } from "@/lib/features/bingos/infoSlice";
 import { useAppSelector } from "@/lib/hooks";
 
   export default function BingoPage() {
     const [gridSize, setGridSize] = useState<number>(0);
 
   const bingoTitle = useAppSelector(selectBingoTitle)
+  const bingoSize = useAppSelector(selectBingoSize)
 
   
   useEffect(() => {
-    const number = sessionStorage.getItem('bingo-size');
-    if (number) {
-      setGridSize(Number(number));
+    if (bingoSize) {
+      setGridSize(Number(bingoSize));
     }
   }, []);
 

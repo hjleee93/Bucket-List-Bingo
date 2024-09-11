@@ -2,11 +2,14 @@
 import BackLayout from "@/app/layouts/backLayout";
 import CustomDialog from "@/components/Dialog";
 import Dropdown from "@/components/Dropdown";
+import { setBingoSize } from "@/lib/features/bingos/infoSlice";
+import { useAppDispatch } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function GenerateSize() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   
   const [isOpen, setIsOpen] = useState(false)
   const [size, setSize] = useState(4)
@@ -25,7 +28,7 @@ export default function GenerateSize() {
   ]
 
   const createBingo = (size: number) => {
-    sessionStorage.setItem('bingo-size', size.toString());
+    dispatch(setBingoSize(size))
     router.push('/bingo');
   }
 
