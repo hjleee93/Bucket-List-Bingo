@@ -19,7 +19,7 @@ const config: Config = {
           300: '#E5E7EB',
           500: '#6B7280'
         }
-      },
+      }
     },
   },
   plugins: [],

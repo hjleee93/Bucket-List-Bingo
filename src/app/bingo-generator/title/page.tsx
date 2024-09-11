@@ -5,20 +5,23 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { selectBingoTitle, setBingoTitle } from "@/lib/features/bingos/infoSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 export default function GenerateTitle() {
   const router = useRouter();
+  const dispatch = useAppDispatch()
   
   const [title, setTitle] = React.useState('');
   const [isTitleError, setIsTitleError] = React.useState(false);
   const [errorText, setErrorText] = React.useState('');
   
-  
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-    if (e.target.value.length > 50) {
+    const value = e.target.value; 
+    setTitle(value);
+    if (value.length > 20) {
       setIsTitleError(true);
-      setErrorText('50자 이내로 입력해주세요');
+      setErrorText('20자 이내로 입력해주세요');
     } else {
       setIsTitleError(false);
       setErrorText('');
@@ -32,6 +35,8 @@ export default function GenerateTitle() {
       setTitle(`_${getFormattedDate()}`)
       console.log(title)
     }
+    dispatch(setBingoTitle(title))
+
     router.push('/bingo-generator/size');
 
   }

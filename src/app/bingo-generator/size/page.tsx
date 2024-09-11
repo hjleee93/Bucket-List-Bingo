@@ -2,7 +2,6 @@
 import BackLayout from "@/app/layouts/backLayout";
 import CustomDialog from "@/components/Dialog";
 import Dropdown from "@/components/Dropdown";
-import Button from "@/components/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -11,6 +10,7 @@ export default function GenerateSize() {
   
   const [isOpen, setIsOpen] = useState(false)
   const [size, setSize] = useState(4)
+
 
   const btnClasses = "h-[150px] w-[150px] bg-gray-300 text-black rounded";
   const sizeOptions = [
