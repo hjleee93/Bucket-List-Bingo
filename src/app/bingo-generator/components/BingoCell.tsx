@@ -1,40 +1,56 @@
 'use client'
 import { useState } from "react";
-import Tiptap from "./Tiptap";
-import { BubbleMenu, Editor } from '@tiptap/react';
+import { BubbleMenu, Editor, EditorContent, useEditor } from '@tiptap/react';
+import FloatingMenu from "./textEditor/FloatingMenu";
+import Tiptap from "./textEditor/Tiptap";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { selectBingoBoard, setBingoContent } from "@/lib/features/bingos/infoSlice";
+
+
 
 interface BingoCellProps {
   onClick: () => void;
   size: number;
-  value?: number;
+  position?: string;
   isLastRow: boolean;
   isLastCol: boolean;
   isClicked: boolean;
-  setCellStatus: (status: boolean) => void;
 }
 
 export default function BingoCell({
   onClick,
   size,
-  value,
+  position,
   isLastRow,
   isLastCol,
   isClicked,
-  setCellStatus
 }: BingoCellProps) {
+  const dispatch = useAppDispatch();
 
   const [editor, setEditor] = useState<Editor | null>(null);
-
+  
   const getEditor = (editor: Editor) => {
-    setCellStatus(editor.isEmpty);
     setEditor(editor);
   }
 
+  const handleFocusChange = (hasFocus: boolean) => {
+    if(!hasFocus){
+      console.log('blur: ', position)
+      console.log(editor?.getHTML()) 
+
+      const row = Number(position?.split(',')[0])
+      const col = Number(position?.split(',')[1])
+      
+      dispatch(setBingoContent({row, col, cell: { value: editor?.getHTML() || '' } }))
+      
+    }
+  };
+  
   return (
     <div
       onClick={onClick}
       className={`
-        flex items-center justify-center text-xl border-black
+        text-xl border-black
         ${isClicked ? 'outline outline-2 mt-[-1px] ml-[-1px] outline-main-active' : ''}
         ${isLastRow ? '' : 'border-b'} ${isLastCol ? '' : 'border-r'}
       `}
@@ -46,21 +62,20 @@ export default function BingoCell({
     
      
       {isClicked && editor && (
-        <div className="relative mb-4" style={{ bottom: `${size}px` }}>
-          <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
-            <div className="bubble-menu">
-              <button
-                onClick={() => editor.chain().focus().toggleBold().run()}
-                className={editor.isActive('bold') ? 'is-active' : ''}
-              >
-                Bold
-              </button>
+        <div className="relative"
+         >
+          <FloatingMenu editor={editor} />
+          <div style={{
+            fontWeight: editor.isActive({ textAlign: 'center' }) ? 'bold' : 'normal',
+          }}>
             </div>
-            
-          </BubbleMenu>
+       
         </div>
       )}
-      <Tiptap isClicked={isClicked} sendEditor={getEditor} />
+
+      <Tiptap isClicked={isClicked} sendEditor={getEditor} 
+       onFocusChange={handleFocusChange}
+      />
     </div>
   );
 }

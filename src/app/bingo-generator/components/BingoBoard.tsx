@@ -42,11 +42,9 @@ export default function BingoBoard({ gridCount, gridSize }: BingoBoardProps) {
             size={gridSize}
             isLastRow={isLastRow}
             isLastCol={isLastCol}
+            position={row + ',' + col}
             isClicked={clickedCell === index}
             onClick={() => handleClick(index)}
-            setCellStatus={(status) => {
-              console.log(status)
-            }}
           />
         );
       })}
