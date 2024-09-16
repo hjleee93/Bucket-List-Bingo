@@ -2,6 +2,9 @@
 import { useState } from "react";
 import BingoCell from "./BingoCell";
 import { send } from "process";
+import { useAppSelector } from "@/lib/hooks";
+import { selectBingoBoard } from "@/lib/features/bingos/infoSlice";
+import React from "react";
 
 interface BingoBoardProps {
   gridCount: number;
@@ -18,13 +21,17 @@ export default function BingoBoard({ gridCount, gridSize }: BingoBoardProps) {
   const [clickedCell, setClickedCell] = useState<number | null>(null);
 
   const handleClick = (index: number) => {
-    console.log('index', index)
+    console.log('clickedCell', clickedCell)
     setClickedCell(index);
+
+    console.log(bingoValues)
   };
+
+  const board = useAppSelector(selectBingoBoard);
 
   return (
     <div
-      className={`grid border border-black mt-10`}
+      className='grid border border-black mt-10'
       style={{
         gridTemplateColumns: `repeat(${gridCount}, 1fr)`, // 동적 grid size 설정
         width: `${gridSize * gridCount}px`, // 동적으로 전체 크기 설정

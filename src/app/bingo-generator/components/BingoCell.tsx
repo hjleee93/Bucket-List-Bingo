@@ -5,6 +5,7 @@ import FloatingMenu from "./textEditor/FloatingMenu";
 import Tiptap from "./textEditor/Tiptap";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { selectBingoBoard, setBingoContent } from "@/lib/features/bingos/infoSlice";
+import React from "react";
 
 
 
@@ -28,6 +29,7 @@ export default function BingoCell({
   const dispatch = useAppDispatch();
 
   const [editor, setEditor] = useState<Editor | null>(null);
+
   
   const getEditor = (editor: Editor) => {
     setEditor(editor);
@@ -36,6 +38,8 @@ export default function BingoCell({
   const handleFocusChange = (hasFocus: boolean) => {
     if(!hasFocus){
       console.log('blur: ', position)
+      console.log('isEmpty: ', editor?.isEmpty)
+      if(editor?.isEmpty) return;
       console.log(editor?.getHTML()) 
 
       const row = Number(position?.split(',')[0])
