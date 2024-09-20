@@ -4,13 +4,14 @@ import { BubbleMenu, Editor, EditorContent, useEditor } from '@tiptap/react';
 import FloatingMenu from "./textEditor/FloatingMenu";
 import Tiptap from "./textEditor/Tiptap";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { selectBingoBoard, setBingoContent } from "@/lib/features/bingos/infoSlice";
+import { selectBingoBoard, setBingoContent, setIsFilledStatus } from "@/lib/features/bingos/infoSlice";
 import React from "react";
 
 
 
 interface BingoCellProps {
   onClick: () => void;
+  onBlurCell: () => void;
   size: number;
   position?: string;
   isLastRow: boolean;
@@ -20,6 +21,7 @@ interface BingoCellProps {
 
 export default function BingoCell({
   onClick,
+  onBlurCell,
   size,
   position,
   isLastRow,
@@ -36,19 +38,18 @@ export default function BingoCell({
   }
 
   const handleFocusChange = (hasFocus: boolean) => {
-    if(!hasFocus){
-      console.log('blur: ', position)
-      console.log('isEmpty: ', editor?.isEmpty)
-      if(editor?.isEmpty) return;
-      console.log(editor?.getHTML()) 
-
-      const row = Number(position?.split(',')[0])
-      const col = Number(position?.split(',')[1])
-      
-      dispatch(setBingoContent({row, col, cell: { value: editor?.getHTML() || '' } }))
-      
+    if (!hasFocus) {
+      const [row, col] = position?.split(',').map(Number) || [];
+      const value = editor?.isEmpty ? '' : editor?.getHTML() || '';
+  
+      console.log('blur: ', position);
+      console.log('isEmpty: ', editor?.isEmpty);
+      onBlurCell();
+  
+      dispatch(setBingoContent({ row, col, cell: { value } }));
     }
   };
+  
   
   return (
     <div

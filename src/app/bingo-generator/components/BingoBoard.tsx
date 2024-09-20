@@ -21,13 +21,13 @@ export default function BingoBoard({ gridCount, gridSize }: BingoBoardProps) {
   const [clickedCell, setClickedCell] = useState<number | null>(null);
 
   const handleClick = (index: number) => {
-    console.log('clickedCell', clickedCell)
     setClickedCell(index);
-
-    console.log(bingoValues)
   };
 
-  const board = useAppSelector(selectBingoBoard);
+  const handleBlurCell = () => {
+
+    setClickedCell(null);
+  };
 
   return (
     <div
@@ -52,6 +52,7 @@ export default function BingoBoard({ gridCount, gridSize }: BingoBoardProps) {
             position={row + ',' + col}
             isClicked={clickedCell === index}
             onClick={() => handleClick(index)}
+            onBlurCell={handleBlurCell}
           />
         );
       })}

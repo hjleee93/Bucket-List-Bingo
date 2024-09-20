@@ -1,5 +1,5 @@
 'use client'
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BingoBoard from "../bingo-generator/components/BingoBoard";
 import Button from "@/components/button";
 import BackLayout from "../layouts/backLayout";
@@ -23,8 +23,17 @@ import { useAppSelector } from "@/lib/hooks";
     }
   }, []);
 
-  //TODO: 보드 밖을 클릭했을 때 
   
+
+  const handleSave = async () => {
+    
+    console.log('save')
+
+    const result = await fetch('/api/hello', {method: 'post'} )
+
+    console.log(result)
+    
+  }
 
   return(
     <BackLayout title={bingoTitle}>
@@ -32,7 +41,9 @@ import { useAppSelector } from "@/lib/hooks";
       <div  ref={boardRef} className="board">
     <BingoBoard gridCount={Number(gridSize)} gridSize={320/Number(gridSize)}/>
     </div>
-    <Button className="absolute bottom-3" size='large' disabled={isAllFilled ? false : true } >{'빙고를 채워주세요!'}</Button>
+    <Button className="absolute bottom-3" size='large' disabled={isAllFilled ? false : true }
+    onClick={() => handleSave()}
+     >{isAllFilled ? '완성!' :'빙고를 채워주세요!'}</Button>
     </div>
     </BackLayout>
   )

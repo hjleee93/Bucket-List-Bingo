@@ -54,11 +54,9 @@ export const bingoInfoSlice = createSlice({
 
 
 
- state.isAllFilled = state.board.every(row => row.every(cell => cell && cell.value !== ''));
-  
-
+      state.isAllFilled = state.board.every(row => row.every(cell => cell && cell.value !== ''));
       console.timeEnd('setBingoContent');
-    }
+    }, 
   },
 });
 
