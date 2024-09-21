@@ -5,8 +5,13 @@ import Button from "@/components/button";
 import BackLayout from "../layouts/backLayout";
 import { selectBingoSize, selectBingoTitle, selectIsAllFilled } from "@/lib/features/bingos/infoSlice";
 import { useAppSelector } from "@/lib/hooks";
+import { useRouter } from "next/navigation";
+import { title } from "process";
+import { apiFetch } from "../utils/fetch";
 
   export default function BingoPage() {
+    const router = useRouter();
+    
     const [gridSize, setGridSize] = useState<number>(0);
     const [isClickedOutside, setIsClickedOutside] = useState(false); // 보드 밖을 클릭했는지 여부
     const boardRef = useRef(null);
@@ -26,12 +31,23 @@ import { useAppSelector } from "@/lib/hooks";
   
 
   const handleSave = async () => {
+  try{
     
-    console.log('save')
+    const body = {
+      title: bingoTitle,
+    }
 
-    const result = await fetch('/api/hello', {method: 'post'} )
+
+
+    const result = await apiFetch('/api/hello','POST', body)
 
     console.log(result)
+
+    router.push(`/bingo/${bingoTitle}`)
+  }catch(e){
+    console.error(e)
+  }
+    
     
   }
 
@@ -43,8 +59,12 @@ import { useAppSelector } from "@/lib/hooks";
     </div>
     <Button className="absolute bottom-3" size='large' disabled={isAllFilled ? false : true }
     onClick={() => handleSave()}
-     >{isAllFilled ? '완성!' :'빙고를 채워주세요!'}</Button>
+     >
+    완성!
+      {/* {isAllFilled ? '완성!' :'빙고를 채워주세요!'} */}
+      </Button>
     </div>
+   
     </BackLayout>
   )
 }

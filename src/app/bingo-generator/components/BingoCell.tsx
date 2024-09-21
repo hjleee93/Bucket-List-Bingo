@@ -4,7 +4,7 @@ import { BubbleMenu, Editor, EditorContent, useEditor } from '@tiptap/react';
 import FloatingMenu from "./textEditor/FloatingMenu";
 import Tiptap from "./textEditor/Tiptap";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { selectBingoBoard, setBingoContent, setIsFilledStatus } from "@/lib/features/bingos/infoSlice";
+import { selectBingoBoard, setBingoContent } from "@/lib/features/bingos/infoSlice";
 import React from "react";
 
 
@@ -44,7 +44,7 @@ export default function BingoCell({
   
       console.log('blur: ', position);
       console.log('isEmpty: ', editor?.isEmpty);
-      onBlurCell();
+      // onBlurCell();
   
       dispatch(setBingoContent({ row, col, cell: { value } }));
     }
