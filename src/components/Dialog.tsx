@@ -22,12 +22,12 @@ export default function CustomDialog({isOpen, children, sendIsOpen, onConfirm}: 
              {children}
              </div>
              <div className="flex flex-row h-[40px] border-t items-center">
-             <div className='border-r w-[50%] flex items-center h-full justify-center' onClick={ onConfirm} >
-              확인
-             </div>
-             <div className=' w-[50%] flex justify-center text-error'>
-              취소
-             </div>
+              <div className='border-r w-[50%] flex items-center h-full justify-center' onClick={ onConfirm } >
+                확인
+              </div>
+              <div className='w-[50%] flex justify-center text-error'>
+                취소
+              </div>
              </div>
              </div>
              

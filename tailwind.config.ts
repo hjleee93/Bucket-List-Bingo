@@ -18,7 +18,8 @@ const config: Config = {
         gray:{ //TODO
           300: '#E5E7EB',
           500: '#6B7280'
-        }
+        },
+        dim: '#696969'
       }
     },
   },
