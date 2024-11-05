@@ -4,7 +4,7 @@ import getFormattedDate from "@/app/utils/date";
 import Button from "@/components/button";
 import Input from "@/components/input";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { ChangeEvent, useState } from "react";
 import { selectBingoTitle, setBingoTitle } from "@/lib/features/bingos/infoSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
@@ -12,11 +12,11 @@ export default function GenerateTitle() {
   const router = useRouter();
   const dispatch = useAppDispatch()
   
-  const [title, setTitle] = React.useState('');
-  const [isTitleError, setIsTitleError] = React.useState(false);
-  const [errorText, setErrorText] = React.useState('');
+  const [title, setTitle] = useState<string>();
+  const [isTitleError, setIsTitleError] = useState(false);
+  const [errorText, setErrorText] = useState('');
   
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value; 
     setTitle(value);
     if (value.length > 20) {
@@ -29,13 +29,15 @@ export default function GenerateTitle() {
   }
 
   const handleSubmit = () => {
-    console.log('SUBMIT', title)
 
     if(!title){
-      setTitle(`_${getFormattedDate()}`)
-      console.log(title)
+      const newTitle = `_${getFormattedDate()}`
+      setTitle(newTitle)
+      dispatch(setBingoTitle(newTitle))
+
+    }else{
+      dispatch(setBingoTitle(title))
     }
-    dispatch(setBingoTitle(title))
 
     router.push('/bingo-generator/size');
 
@@ -46,7 +48,6 @@ export default function GenerateTitle() {
 
     if(e.key === 'Enter'){
       e.preventDefault();
-      console.log('ENTER')
       setTitle(e.currentTarget.value)
     }
     handleSubmit();

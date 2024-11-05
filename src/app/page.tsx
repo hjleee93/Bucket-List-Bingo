@@ -1,12 +1,27 @@
 'use client';
 
+import { useRouter } from "next/navigation";
+
 export default function Home() {
+  const router = useRouter();
  const kakaologin = () => {
+  socialLogin();
   
  }
  const appleLogin = () => {
+
   }
 
+  const naverLogin = () => {
+  }
+
+
+  const socialLogin = () => {
+    console.log('social!')
+    router.push('/user/landing');
+    
+    
+  }
 
   const goJoinPage = () => {
     console.log('회원가입 페이지로 이동합니다.')
@@ -20,7 +35,9 @@ export default function Home() {
           <hr className="flex-grow border-gray-300" />
         </div>
         <div className="space-y-4 mx-8">
-          <button className="w-full py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition duration-300">
+          <button 
+          onClick={kakaologin}
+          className="w-full py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition duration-300">
             카카오
           </button>
           <button className="w-full py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition duration-300">

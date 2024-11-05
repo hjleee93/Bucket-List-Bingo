@@ -33,9 +33,20 @@ import CustomAlert from "@/components/Alert";
     if (bingoSize) {
       setGridSize(Number(bingoSize));
     }
+
+    // detect refresh
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, []);
 
-  
 
   const handleSave = async () => {
   try{
@@ -53,7 +64,7 @@ import CustomAlert from "@/components/Alert";
     console.log(body)
 
 
-
+    //타이틀 중복 검사해서 중복인 경우 새로운 주소 만들어야됨 
     const result = await apiFetch('/api/hello','POST', body)
 
     router.push(`/bingo/${bingoTitle}`)

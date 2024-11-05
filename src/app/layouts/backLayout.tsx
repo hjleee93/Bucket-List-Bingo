@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import '../globalIcon.css';
+
 import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {

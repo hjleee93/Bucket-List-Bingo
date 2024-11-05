@@ -1,4 +1,12 @@
+import useSWR from "swr";
+
 interface FetchOptions extends RequestInit {
+}
+
+const fetcher = (url: string) => fetch(url).then(r => r.json())
+
+export const useSWRFetch = (url: string) => {
+  return useSWR(url, fetcher)
 }
 
 export const apiFetch = async (url: string,
