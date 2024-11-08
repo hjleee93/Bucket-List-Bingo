@@ -3,8 +3,8 @@ import { useState } from "react";
 import { BubbleMenu, Editor, EditorContent, useEditor } from '@tiptap/react';
 import FloatingMenu from "./textEditor/FloatingMenu";
 import Tiptap from "./textEditor/Tiptap";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { selectBingoBoard, setBingoContent } from "@/lib/features/bingos/infoSlice";
+import { useAppDispatch, useAppSelector } from "@/libs/hooks";
+import { selectBingoBoard, setBingoContent } from "@/libs/features/bingos/infoSlice";
 import React from "react";
 
 

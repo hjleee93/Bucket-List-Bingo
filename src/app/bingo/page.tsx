@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import BingoBoard from "../bingo-generator/components/BingoBoard";
 import Button from "@/components/button";
 import BackLayout from "../layouts/backLayout";
-import { selectBingoBoard, selectBingoSize, selectBingoTitle, selectIsAllFilled } from "@/lib/features/bingos/infoSlice";
-import { useAppSelector } from "@/lib/hooks";
+import { selectBingoBoard, selectBingoSize, selectBingoTitle, selectIsAllFilled } from "@/libs/features/bingos/infoSlice";
+import { useAppSelector } from "@/libs/hooks";
 
 import { title } from "process";
 import { apiFetch } from "../utils/fetch";

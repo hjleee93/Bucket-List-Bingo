@@ -5,8 +5,8 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-import { selectBingoTitle, setBingoTitle } from "@/lib/features/bingos/infoSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { selectBingoTitle, setBingoTitle } from "@/libs/features/bingos/infoSlice";
+import { useAppDispatch, useAppSelector } from "@/libs/hooks";
 
 export default function GenerateTitle() {
   const router = useRouter();

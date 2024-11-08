@@ -1,4 +1,4 @@
-import { RootState } from "@/lib/store";
+import { RootState } from "@/libs/store";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface bingoInfoState {

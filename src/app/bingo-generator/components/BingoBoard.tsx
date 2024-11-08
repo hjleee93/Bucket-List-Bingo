@@ -2,8 +2,8 @@
 import { useState } from "react";
 import BingoCell from "./BingoCell";
 import { send } from "process";
-import { useAppSelector } from "@/lib/hooks";
-import { selectBingoBoard } from "@/lib/features/bingos/infoSlice";
+import { useAppSelector } from "@/libs/hooks";
+import { selectBingoBoard } from "@/libs/features/bingos/infoSlice";
 import React from "react";
 
 interface BingoBoardProps {

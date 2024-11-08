@@ -26,6 +26,7 @@ export default function Home() {
   const goJoinPage = () => {
     console.log('회원가입 페이지로 이동합니다.')
   }
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full">

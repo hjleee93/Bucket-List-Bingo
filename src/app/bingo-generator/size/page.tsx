@@ -2,8 +2,8 @@
 import BackLayout from "@/app/layouts/backLayout";
 import CustomDialog from "@/components/Dialog";
 import Dropdown from "@/components/Dropdown";
-import { setBingoSize } from "@/lib/features/bingos/infoSlice";
-import { useAppDispatch } from "@/lib/hooks";
+import { setBingoSize } from "@/libs/features/bingos/infoSlice";
+import { useAppDispatch } from "@/libs/hooks";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
