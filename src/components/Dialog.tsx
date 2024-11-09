@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Dialog, DialogPanel } from '@headlessui/react'
 
 interface CustomDialogProps {
   isOpen: boolean;
