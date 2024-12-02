@@ -14,6 +14,7 @@ export const apiFetch = async (url: string,
   body? :{},
  options?: FetchOptions): Promise<any> => {
   try {
+    
     const response = await fetch(url, {
       ...options,
       headers: {
@@ -29,6 +30,7 @@ export const apiFetch = async (url: string,
     }
 
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error("Fetch error:", error);

@@ -11,7 +11,7 @@ export default function MyPage() {
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
-  
+
 
   function logout() {
     console.log('logout')
@@ -46,10 +46,31 @@ export default function MyPage() {
         </div>
       </footer>
       <BottomDialog isOpen={isOpen} sendIsOpen={() => setIsOpen(false)} >
-        <div>
-          사진사진
-        </div>
-        </BottomDialog>
+        <ul className="space-y-4">
+          <li className="flex flex-row">
+
+            <span className="material-symbols-outlined mr-4">
+              image
+            </span>
+            <span>앨범에서 선택</span>
+          </li>
+          <li className="flex flex-row">
+            <span className="material-symbols-outlined mr-4">
+              image
+            </span>
+            <span>사진 찍기</span>
+
+          </li>
+          <li className="flex flex-row">
+            <span className="material-symbols-outlined mr-4">
+              image
+            </span>
+            <span>앨범에서 선택</span>
+
+          </li>
+
+        </ul>
+      </BottomDialog>
 
 
     </BackLayout>

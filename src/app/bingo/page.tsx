@@ -7,7 +7,7 @@ import { selectBingoBoard, selectBingoSize, selectBingoTitle, selectIsAllFilled 
 import { useAppSelector } from "@/libs/hooks";
 
 import { title } from "process";
-import { apiFetch } from "../utils/fetch";
+import { apiFetch } from "../../utils/fetch";
 import { useRouter } from "next/navigation";
 import CustomDialog from "@/components/Dialog";
 import CustomAlert from "@/components/Alert";
@@ -64,8 +64,9 @@ import CustomAlert from "@/components/Alert";
     console.log(body)
 
 
-    //타이틀 중복 검사해서 중복인 경우 새로운 주소 만들어야됨 
-    const result = await apiFetch('/api/hello','POST', body)
+    //TODO: 타이틀 중복 검사해서 중복인 경우 새로운 주소 만들어야됨 
+    const result = await apiFetch('/api/bingos','POST', body)
+
 
     router.push(`/bingo/${bingoTitle}`)
 

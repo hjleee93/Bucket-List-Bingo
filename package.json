@@ -20,13 +20,15 @@
     "@tiptap/pm": "^2.6.6",
     "@tiptap/react": "^2.6.6",
     "@tiptap/starter-kit": "^2.6.6",
-    "mysql2": "^3.11.3",
+    "firebase": "^11.0.2",
+    "mysql2": "^3.11.5",
     "next": "14.2.7",
     "next-auth": "^4.24.7",
     "quill": "^2.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^9.1.2",
+    "sequelize": "^6.37.5",
     "swr": "^2.2.5"
   },
   "devDependencies": {

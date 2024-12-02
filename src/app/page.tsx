@@ -1,9 +1,12 @@
 'use client';
 
+import { signInWithGoogle } from "@/libs/auth/google";
+import { signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
+
  const kakaologin = () => {
   socialLogin();
   
@@ -13,6 +16,14 @@ export default function Home() {
   }
 
   const naverLogin = () => {
+  }
+
+  const googleLogin = async () => {
+    await signInWithGoogle();
+    console.log('google!')
+
+    
+    
   }
 
 
@@ -44,7 +55,9 @@ export default function Home() {
           <button className="w-full py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition duration-300">
             네이버
           </button>
-          <button className="w-full py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition duration-300">
+          <button 
+          onClick={googleLogin}
+          className="w-full py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition duration-300">
             구글
           </button>
         </div>

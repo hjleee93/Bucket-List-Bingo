@@ -5,8 +5,8 @@ type ButtonProps = {
   onClick?: (event : React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  size?: 'small' | 'medium' | 'large';
-  variant?: 'filled' | 'outlined'; 
+  size?: 'small' | 'medium' | 'large' | 'auto';
+  variant?: 'filled' | 'outlined' | 'underline'; 
   className?: string;
 };
 
@@ -28,7 +28,12 @@ const Button = ({ children, onClick, disabled, type = 'button', size = 'large', 
       break;
     case 'medium':
       height = 'h-12';
-    width = 'w-[165px]';
+      width = 'w-[165px]';
+      break;
+    case 'auto':
+      height = 'h-auto';
+      width = 'w-auto';
+      break;
     default:
   }
 
@@ -40,6 +45,10 @@ const Button = ({ children, onClick, disabled, type = 'button', size = 'large', 
       _variant = 'bg-white border border-main-active text-main-active hover:bg-main-active hover:text-white disabled:bg-main-disabled'
       break;
     default:
+      case 'underline':
+        //TODO: style 정리
+        _variant = 'text-main-active underline'
+        break;
   }
 
   if(disabled) {

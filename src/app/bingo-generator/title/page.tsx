@@ -1,6 +1,6 @@
 'use client'
 
-import getFormattedDate from "@/app/utils/date";
+import getFormattedDate from "@/utils/date";
 import Button from "@/components/button";
 import Input from "@/components/input";
 import { useRouter } from "next/navigation";
